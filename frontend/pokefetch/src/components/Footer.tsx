@@ -9,8 +9,8 @@ const Footer = (): JSX.Element => {
 
     return (
         <>
-            <footer className='bg-black-background w-full h-auto px-3 py-2 pt-4 overflow-hidden'>
-                <div className='w-full relative bg-transparant z-1'>
+            <footer className=' bg-black-background w-full h-auto px-3 py-2 pt-4 overflow-hidden'>
+                <div className='z-20 w-full relative bg-transparant'>
                     <h5 className='font-semibold!'>BY LITTLE THINKER</h5>
 
                     <div className='w-full flex flex-col sm:flex-row justify-start sm:justify-between items-start gap-2 [&>span,a]:text-xs [&>span,a]:text-gray-4'>

@@ -36,7 +36,7 @@ const Home = (): JSX.Element => {
   return (
     <main className='w-full min-h-screen flex flex-col justify-center items-center relative'>
       <Activity mode={searchFocus ? 'visible' : 'hidden'}>
-        <header className='z-10 w-full h-auto fixed top-0 px-3 py-2 bg-black/70 backdrop-blur-sm flex flex-row justify-start items-center gap-x-2 md:gap-x-4 shadow-xl'>
+        <header className='z-20 w-full h-auto fixed top-0 px-3 py-2 bg-black/70 backdrop-blur-sm flex flex-row justify-start items-center gap-x-2 md:gap-x-4 shadow-xl'>
           <img
             src={PokeFetchLogo}
             alt='PokéFetch Logo'

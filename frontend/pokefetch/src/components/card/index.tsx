@@ -20,6 +20,8 @@ import {
   type PokeTypesColorType
 } from '../../utils/types';
 
+import CardBgImage from '../../assets/card-wave-bg.png'
+
 const OutputSection = (): JSX.Element => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsType | null>(null);
@@ -64,7 +66,14 @@ const OutputSection = (): JSX.Element => {
 
       {pokemonDetails && (
         <Suspense fallback={<LoadingState />}>
-          <div className='mx-auto w-full lg:w-[55rem] xl:w-[68rem] h-5xl grid grid-cols-12 border border-gray-5 rounded-md p-2 md:p-4 shadow-xl mb-5'>
+          <div className='mx-auto w-full lg:w-[55rem] xl:w-[68rem] h-5xl grid grid-cols-12 border border-gray-5 rounded-md p-2 md:p-4 shadow-xl mb-5 relative z-1 bg-gray-1/30 backdrop-blur-xl'>
+            <img 
+              src={CardBgImage}
+              alt=''
+              className='w-full object-bottom absolute bottom-0 opacity-15 -z-1'
+              loading='eager'
+            />
+
             <div className='col-span-12 md:col-span-5 flex flex-col justify-start items-start me-0 md:me-5 lg:me-0'>
                 <div className='flex flex-col justify-center items-start gap-y-1'>
                     <h1 className='font-semibold! text-wrap'>{changeFirstLetterToUpperCase(removeHypens(pokemonDetails?.name))} <sup className='align-super text-xs text-gray-2'>#{pokemonDetails?.order}</sup></h1>
@@ -101,7 +110,7 @@ const OutputSection = (): JSX.Element => {
                   <div 
                     className='absolute top-1/2 right-[25%] w-30 h-25'
                   >
-                    <div className='w-full h-full bg-white/0 hover:bg-white/20 blur-2xl transform-3d skew-y-10 -skew-x-3 -translate-y-5 -rotate-20 rounded-[3rem]transition-all duration-500 ease-in' />
+                    <div className='w-full h-full bg-white/0 hover:bg-white/10 blur-2xl transform-3d skew-y-10 -skew-x-3 -translate-y-5 -rotate-20 rounded-[3rem] transition-all duration-500 ease-in' />
                   </div>
                 </div>
             </div>
