@@ -1,4 +1,5 @@
-import { useState, startTransition, Activity, type JSX } from 'react'
+import { useState, startTransition, Activity, useEffect, type JSX } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
 
 import CreditsModal from './CreditsModal'
 
@@ -7,9 +8,18 @@ import PokeFetchLogoOriginal from '../assets/pokefetch-icon-original.png';
 const Footer = (): JSX.Element => {
     const [openCreditsModal, setOpenCreditsModal] = useState<boolean>(false);
 
+    useEffect(() => {
+        if(openCreditsModal) {
+            document.getElementById('credits-modal')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'end',
+            })
+        }
+    }, [openCreditsModal])
+
     return (
         <>
-            <footer className=' bg-black-background w-full h-auto px-3 py-2 pt-4 overflow-hidden'>
+            <footer className='bg-black-background w-full h-auto px-3 py-2 pt-4 overflow-hidden'>
                 <div className='z-20 w-full relative bg-transparant'>
                     <h5 className='font-semibold!'>BY LITTLE THINKER</h5>
 
@@ -29,19 +39,29 @@ const Footer = (): JSX.Element => {
                         About & Credits
                     </button>
 
-                    <img
+                    <motion.img
                         src={PokeFetchLogoOriginal}
                         alt='footer back logo'
-                        className='w-auto h-full object-cover absolute right-0 bottom-0 z-0 opacity-20 transform translate-x-5 translate-y-5 -rotate-30 pointer-events-none'
+                        className='w-auto h-full object-cover absolute right-0 bottom-0 z-0 transform translate-x-5 translate-y-5 -rotate-30 pointer-events-none'
+                        initial={{ opacity: 0.1 }}
+                        whileInView={{ opacity: 0.2 }}
+                        transition={{
+                            duration: 0.8,
+                            ease: 'easeInOut',
+                        }}
                     />
                 </div>
             </footer>
 
-            <Activity mode={openCreditsModal ? 'visible' : 'hidden'}>
-                <CreditsModal 
-                    setOpenCreditsModal={setOpenCreditsModal}
-                />
-            </Activity>
+            {/* <Activity mode={openCreditsModal ? 'visible' : 'hidden'}> */}
+            <AnimatePresence mode='wait'>
+                {openCreditsModal && (
+                    <CreditsModal 
+                        setOpenCreditsModal={setOpenCreditsModal}
+                    />
+                )}
+            </AnimatePresence>
+            {/* </Activity> */}
 
         </>
     )

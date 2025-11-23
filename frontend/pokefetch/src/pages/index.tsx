@@ -2,6 +2,7 @@
 
 import { lazy, useEffect, useState, startTransition, type JSX, Activity } from 'react'
 import { Outlet, useLocation } from 'react-router'
+import { motion } from 'motion/react';
 
 const SearchSection = lazy(() => import('../components/search'));
 const Footer = lazy(() => import('../components/Footer'))
@@ -36,14 +37,23 @@ const Home = (): JSX.Element => {
   return (
     <main className='w-full min-h-screen flex flex-col justify-center items-center relative'>
       <Activity mode={searchFocus ? 'visible' : 'hidden'}>
-        <header className='z-20 w-full h-auto fixed top-0 px-3 py-2 bg-black/70 backdrop-blur-sm flex flex-row justify-start items-center gap-x-2 md:gap-x-4 shadow-xl'>
+        <motion.header 
+          className='z-20 w-full h-auto fixed top-0 px-3 py-2 bg-black/70 backdrop-blur-sm flex flex-row justify-start items-center gap-x-2 md:gap-x-4 shadow-xl'
+          initial={{ y: -50 }}
+          whileInView={{ y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0, 0.71, 0.2, 1.01],
+            type: 'spring',
+          }}
+        >
           <img
             src={PokeFetchLogo}
             alt='PokéFetch Logo'
             className='w-auto h-7 sm:h-9 md:h-10 object-contain'
           />
           <h3 className='text-foreground! select-none mb-0!'>Poké<span className='text-primary'>Fetch</span></h3>
-        </header>
+        </motion.header>
       </Activity>
       
       <div className='w-full min-h-screen flex flex-col justify-center items-center'>
