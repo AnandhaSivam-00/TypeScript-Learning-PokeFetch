@@ -36,7 +36,7 @@ console.log(result3);
 
 // 4. Validate Strong Password
 // Scenario: Password must have: 8+ characters, at least one uppercase, one lowercase, one digit, and one special character.
-const regex4 = /[]/;
+const regex4 = /(?=.*[a-z])[a-zA-Z0-9@\$\*!%,\.]{8,}/;
 const content4 = ["Secure@123", "weak", "NoSpecial123", "noupppercase@123"];
 const result4: string[] = [];
 for(let i=0; i<content4.length; i++) {
