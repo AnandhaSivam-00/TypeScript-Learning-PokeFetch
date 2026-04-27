@@ -66,7 +66,7 @@ console.log("5 ==>", result5);
 
 // 6. HTML Tag Extraction
 // Scenario: Extract opening HTML tags from a document.
-const regex6 = /<\/?[a-z]+[\sa-zA-Z=\"\(\):;-]*\/?>/g;
+const regex6 = /<\/?[a-z][a-z0-9-]*(?:\s+[a-zA-Z:-]+(?:=(?:"[^"]*"|'[^']*'|[^\s>]+))?)*\s*\/?>/gi;
 const content6 = `<div class="container">
   <p id="intro" style="color: red;">Welcome</p>
   <img src="photo.jpg" alt="Photo" />
