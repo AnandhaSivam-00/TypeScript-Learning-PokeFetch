@@ -138,7 +138,7 @@ console.log("9 ==>", result9);
 // Multi-line (HTML)	<!-- This is an HTML comment that also spans multiple lines -->
 // JSDoc	/** JSDoc comment **/
 // Special	/*! Special comment with exclamation */
-const regex10 = /(\/{2}\s.*$)|(#\s.*$)|(\-{2}\s.*$)|(\/\*.*[\s\S]\*\/$)|(<!--.*[\s\S]-->$)/gm;
+const regex10 = /(\/{2}\s.*$)|(#\s.*$)|(\-{2}\s.*$)|(\/\*[\s\S]*?\*\/$)|(<!--[\s\S]*?-->$)/gm;
 const content10 = `
 // This is a JavaScript single-line comment
 const name = "John"; // inline comment

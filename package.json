@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch regex.ts"
+    "dev": "tsx watch Regex/regex.ts"
   },
   "author": "",
   "license": "ISC",
